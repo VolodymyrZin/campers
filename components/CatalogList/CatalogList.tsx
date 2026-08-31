@@ -5,16 +5,24 @@ import { getCampers } from '@/lib/api/campers';
 import CamperCard from '../../components/CamperCard/CamperCard';
 import Filters from '../../components/Filters/Filters';
 import { useState } from 'react';
+import type { CamperForm, Transmission, Engine } from '@/types/camper';
+
+interface FiltersState {
+  location: string;
+  form?: CamperForm;
+  transmission?: Transmission;
+  engine?: Engine;
+}
 
 export default function CatalogList() {
-  const [filters, setFilters] = useState({
+  const [filters, setFilters] = useState<FiltersState>({
     location: '',
     form: undefined,
     transmission: undefined,
     engine: undefined,
   });
 
-  const [appliedFilters, setAppliedFilters] = useState({
+  const [appliedFilters, setAppliedFilters] = useState<FiltersState>({
     location: '',
     form: undefined,
     transmission: undefined,
@@ -57,10 +65,17 @@ export default function CatalogList() {
     <div>
       <Filters
         location={filters.location}
+        form={filters.form}
         onLocationChange={value =>
           setFilters(prev => ({
             ...prev,
             location: value,
+          }))
+        }
+        onFormChange={value =>
+          setFilters(prev => ({
+            ...prev,
+            form: value,
           }))
         }
         onSearch={() => setAppliedFilters(filters)}
