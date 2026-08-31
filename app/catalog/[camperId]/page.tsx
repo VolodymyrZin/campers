@@ -1,3 +1,4 @@
+import BookingForm from '@/components/BookingForm/BookingForm';
 import { getCamperById, getReviews } from '@/lib/api/campers';
 
 interface CamperPageProps {
@@ -36,6 +37,7 @@ export default async function CamperPage({ params }: CamperPageProps) {
           <img key={image.id} src={image.original} alt={camper.name} />
         ))}
       </div>
+      <BookingForm camperId={camperId} />
     </main>
   );
 }
