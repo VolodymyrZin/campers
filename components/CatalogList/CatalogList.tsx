@@ -2,9 +2,17 @@
 
 import { useInfiniteQuery } from '@tanstack/react-query';
 import { getCampers } from '@/lib/api/campers';
+import CamperCard from '../../components/CamperCard/CamperCard';
 
 export default function CatalogList() {
-  const { data, isLoading, isError } = useInfiniteQuery({
+  const {
+    data,
+    isLoading,
+    isError,
+    fetchNextPage,
+    hasNextPage,
+    isFetchingNextPage,
+  } = useInfiniteQuery({
     queryKey: ['campers'],
     queryFn: ({ pageParam }) =>
       getCampers({
@@ -32,7 +40,19 @@ export default function CatalogList() {
   return (
     <div>
       {data?.pages.flatMap(page =>
-        page.campers.map(camper => <p key={camper.id}>{camper.name}</p>)
+        page.campers.map(camper => (
+          <CamperCard key={camper.id} camper={camper} />
+        ))
+      )}
+
+      {hasNextPage && (
+        <button
+          type="button"
+          onClick={() => fetchNextPage()}
+          disabled={isFetchingNextPage}
+        >
+          {isFetchingNextPage ? 'Loading...' : 'Load More'}
+        </button>
       )}
     </div>
   );
