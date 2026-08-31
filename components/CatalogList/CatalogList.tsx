@@ -3,8 +3,23 @@
 import { useInfiniteQuery } from '@tanstack/react-query';
 import { getCampers } from '@/lib/api/campers';
 import CamperCard from '../../components/CamperCard/CamperCard';
+import Filters from '../../components/Filters/Filters';
+import { useState } from 'react';
 
 export default function CatalogList() {
+  const [filters, setFilters] = useState({
+    location: '',
+    form: undefined,
+    transmission: undefined,
+    engine: undefined,
+  });
+
+  const [appliedFilters, setAppliedFilters] = useState({
+    location: '',
+    form: undefined,
+    transmission: undefined,
+    engine: undefined,
+  });
   const {
     data,
     isLoading,
@@ -13,11 +28,12 @@ export default function CatalogList() {
     hasNextPage,
     isFetchingNextPage,
   } = useInfiniteQuery({
-    queryKey: ['campers'],
+    queryKey: ['campers', appliedFilters],
     queryFn: ({ pageParam }) =>
       getCampers({
         page: pageParam,
         perPage: 4,
+        ...appliedFilters,
       }),
     initialPageParam: 1,
     getNextPageParam: lastPage => {
@@ -39,6 +55,16 @@ export default function CatalogList() {
 
   return (
     <div>
+      <Filters
+        location={filters.location}
+        onLocationChange={value =>
+          setFilters(prev => ({
+            ...prev,
+            location: value,
+          }))
+        }
+        onSearch={() => setAppliedFilters(filters)}
+      />
       {data?.pages.flatMap(page =>
         page.campers.map(camper => (
           <CamperCard key={camper.id} camper={camper} />
