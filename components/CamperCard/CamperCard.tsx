@@ -1,5 +1,5 @@
 import type { Camper } from '@/types/camper';
-import Image from 'next/image';
+import Link from 'next/link';
 
 interface CamperCardProps {
   camper: Camper;
@@ -25,6 +25,13 @@ export default function CamperCard({ camper }: CamperCardProps) {
       <p>Height: {camper.height}</p>
       <p>Tank: {camper.tank}</p>
       <p>Consumption: {camper.consumption}</p>
+      <Link
+        href={`/catalog/${camper.id}`}
+        target="_blank"
+        rel="noopener noreferrer"
+      >
+        Show more
+      </Link>
     </article>
   );
 }
