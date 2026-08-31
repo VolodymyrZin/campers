@@ -10,8 +10,8 @@ import type { CamperForm, Transmission, Engine } from '@/types/camper';
 interface FiltersState {
   location: string;
   form?: CamperForm;
-  transmission?: Transmission;
   engine?: Engine;
+  transmission?: Transmission;
 }
 
 export default function CatalogList() {
@@ -66,6 +66,8 @@ export default function CatalogList() {
       <Filters
         location={filters.location}
         form={filters.form}
+        engine={filters.engine}
+        transmission={filters.transmission}
         onLocationChange={value =>
           setFilters(prev => ({
             ...prev,
@@ -76,6 +78,18 @@ export default function CatalogList() {
           setFilters(prev => ({
             ...prev,
             form: value,
+          }))
+        }
+        onEngineChange={value =>
+          setFilters(prev => ({
+            ...prev,
+            engine: value,
+          }))
+        }
+        onTransmissionChange={value =>
+          setFilters(prev => ({
+            ...prev,
+            transmission: value,
           }))
         }
         onSearch={() => setAppliedFilters(filters)}
