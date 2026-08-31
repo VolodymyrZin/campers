@@ -1,6 +1,7 @@
 'use client';
 
 import { createBooking } from '@/lib/api/bookings';
+import toast from 'react-hot-toast';
 import css from './BookingForm.module.css';
 
 interface BookingFormProps {
@@ -23,6 +24,7 @@ export default function BookingForm({ camperId }: BookingFormProps) {
       const response = await createBooking(camperId, body);
 
       console.log(response);
+      toast.success('Booking request sent successfully!');
     } catch (error) {
       console.error(error);
     }
