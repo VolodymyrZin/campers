@@ -3,6 +3,7 @@ import type {
   Transmission,
   Engine,
   CampersResponse,
+  CamperFilters,
 } from '@/types/camper';
 
 import { api } from './api';
@@ -35,5 +36,10 @@ export async function getCampers({
     },
   });
 
+  return response.data;
+}
+
+export async function getCamperFilters(): Promise<CamperFilters> {
+  const response = await api.get<CamperFilters>('/campers/filters');
   return response.data;
 }
