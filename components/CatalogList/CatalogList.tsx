@@ -4,6 +4,7 @@ import { useInfiniteQuery } from '@tanstack/react-query';
 import { getCampers } from '@/lib/api/campers';
 import CamperCard from '../../components/CamperCard/CamperCard';
 import Filters from '../../components/Filters/Filters';
+import css from './CatalogList.module.css';
 import { useState } from 'react';
 import type { CamperForm, Transmission, Engine } from '@/types/camper';
 
@@ -14,20 +15,21 @@ interface FiltersState {
   transmission?: Transmission;
 }
 
+const initialFilters: FiltersState = {
+  location: '',
+  form: undefined,
+  engine: undefined,
+  transmission: undefined,
+};
 export default function CatalogList() {
-  const [filters, setFilters] = useState<FiltersState>({
-    location: '',
-    form: undefined,
-    transmission: undefined,
-    engine: undefined,
-  });
+  const [filters, setFilters] = useState<FiltersState>(initialFilters);
 
-  const [appliedFilters, setAppliedFilters] = useState<FiltersState>({
-    location: '',
-    form: undefined,
-    transmission: undefined,
-    engine: undefined,
-  });
+  const [appliedFilters, setAppliedFilters] =
+    useState<FiltersState>(initialFilters);
+  const handleClearFilters = () => {
+    setFilters(initialFilters);
+    setAppliedFilters(initialFilters);
+  };
   const {
     data,
     isLoading,
@@ -62,53 +64,59 @@ export default function CatalogList() {
   }
 
   return (
-    <div>
-      <Filters
-        location={filters.location}
-        form={filters.form}
-        engine={filters.engine}
-        transmission={filters.transmission}
-        onLocationChange={value =>
-          setFilters(prev => ({
-            ...prev,
-            location: value,
-          }))
-        }
-        onFormChange={value =>
-          setFilters(prev => ({
-            ...prev,
-            form: value,
-          }))
-        }
-        onEngineChange={value =>
-          setFilters(prev => ({
-            ...prev,
-            engine: value,
-          }))
-        }
-        onTransmissionChange={value =>
-          setFilters(prev => ({
-            ...prev,
-            transmission: value,
-          }))
-        }
-        onSearch={() => setAppliedFilters(filters)}
-      />
-      {data?.pages.flatMap(page =>
-        page.campers.map(camper => (
-          <CamperCard key={camper.id} camper={camper} />
-        ))
-      )}
+    <div className={css.catalog}>
+      <aside className={css.sidebar}>
+        <Filters
+          location={filters.location}
+          form={filters.form}
+          engine={filters.engine}
+          transmission={filters.transmission}
+          onLocationChange={value =>
+            setFilters(prev => ({
+              ...prev,
+              location: value,
+            }))
+          }
+          onFormChange={value =>
+            setFilters(prev => ({
+              ...prev,
+              form: value,
+            }))
+          }
+          onTransmissionChange={value =>
+            setFilters(prev => ({
+              ...prev,
+              transmission: value,
+            }))
+          }
+          onEngineChange={value =>
+            setFilters(prev => ({
+              ...prev,
+              engine: value,
+            }))
+          }
+          onSearch={() => setAppliedFilters(filters)}
+          onClearFilters={handleClearFilters}
+        />
+      </aside>
 
-      {hasNextPage && (
-        <button
-          type="button"
-          onClick={() => fetchNextPage()}
-          disabled={isFetchingNextPage}
-        >
-          {isFetchingNextPage ? 'Loading...' : 'Load More'}
-        </button>
-      )}
+      <section className={css.content}>
+        {data?.pages.flatMap(page =>
+          page.campers.map(camper => (
+            <CamperCard key={camper.id} camper={camper} />
+          ))
+        )}
+
+        {hasNextPage && (
+          <button
+            type="button"
+            onClick={() => fetchNextPage()}
+            disabled={isFetchingNextPage}
+          >
+            {isFetchingNextPage ? 'Loading...' : 'Load More'}
+          </button>
+        )}
+      </section>
     </div>
   );
 }
