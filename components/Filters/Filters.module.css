@@ -125,6 +125,7 @@
   color: #fff;
   font-family: 'Inter', sans-serif;
   margin-bottom: 16px;
+  border: none;
 }
 .clearFiltersButton {
   border: 1px solid #dadde1;

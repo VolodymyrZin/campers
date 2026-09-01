@@ -1,3 +1,14 @@
+.container {
+  width: 100%;
+  max-width: 1440px;
+  margin-left: auto;
+  margin-right: auto;
+  padding-left: 63px;
+  padding-right: 64px;
+  outline: 1px solid red;
+  padding-top: 48px;
+  padding-bottom: 52px;
+}
 .catalog {
   display: grid;
   grid-template-columns: 360px 1fr;
@@ -9,7 +20,20 @@
 }
 
 .content {
-  display: grid;
-  grid-template-columns: repeat(2, 1fr);
+  display: flex;
+  flex-direction: column;
   gap: 32px;
+}
+.loadMoreButton {
+  padding: 16px 32px;
+  border: 1px solid #dadde1;
+  border-radius: 200px;
+
+  margin: 0 auto;
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 1.5;
+  letter-spacing: -0.01em;
+  color: #101828;
+  background-color: #fff;
 }

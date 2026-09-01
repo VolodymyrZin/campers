@@ -1,0 +1,48 @@
+.headerSection {
+  width: 100%;
+  border-bottom: 1px solid #f2f4f7;
+  background-color: #f7f7f7;
+}
+
+.container {
+  width: 100%;
+  max-width: 1440px;
+  height: 72px;
+  margin: 0 auto;
+  padding-left: 63px;
+  padding-right: 64px;
+  outline: 1px solid red;
+
+  display: flex;
+  align-items: center;
+}
+
+.logo {
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+}
+
+.headerNav {
+  margin: 0 auto;
+  display: flex;
+  gap: 32px;
+}
+
+.homePage {
+  font-family: 'Inter', sans-serif;
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 1.5;
+  color: #101828;
+  cursor: pointer;
+}
+
+.catalogPage {
+  font-family: 'Inter', sans-serif;
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 1.5;
+  color: #829b91;
+  cursor: pointer;
+}

@@ -1,0 +1,123 @@
+.camperCard {
+  display: flex;
+  padding: 24px;
+  gap: 24px;
+
+  border-radius: 20px;
+  background-color: #f7f7f7;
+}
+
+.image {
+  border-radius: 16px;
+  object-fit: cover;
+  flex-shrink: 0;
+}
+
+.cardContent {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+  max-width: 524px;
+}
+
+.namePriceWrapper {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.namePriceWrapper h2 {
+  font-weight: 600;
+  font-size: 24px;
+  line-height: 1.33333;
+  color: #101828;
+  font-family: 'Inter', sans-serif;
+}
+
+.namePriceWrapper p {
+  font-weight: 600;
+  font-size: 24px;
+  line-height: 1.33333;
+  color: #101828;
+}
+
+.ratingReviewsLocationWrapper {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  color: #101828;
+  font-size: 16px;
+}
+.ratingReviewsLocationWrapper p {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+
+.description {
+  color: #475467;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 1.5;
+  display: -webkit-box;
+  -webkit-line-clamp: 1;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  font-family: 'Inter', sans-serif;
+}
+
+.features {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+
+.features span {
+  display: flex;
+  align-items: center;
+  padding: 12px 18px;
+  border-radius: 100px;
+  background-color: #f2f4f7;
+  font-size: 16px;
+  font-weight: 500;
+  color: #101828;
+  text-transform: capitalize;
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 1.5;
+  text-align: center;
+  color: #101828;
+  mix-blend-mode: multiply;
+  gap: 8px;
+}
+
+.showMore {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 166px;
+  height: 56px;
+  border-radius: 200px;
+  background-color: #829b91;
+  color: #fff;
+  font-weight: 500;
+  font-size: 16px;
+  text-decoration: none;
+}
+.locationLogoRating {
+  display: flex;
+  gap: 0px;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 1.5;
+  color: #101828;
+  font-family: 'Inter', sans-serif;
+}
+.commonWrapper {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}

@@ -64,59 +64,62 @@ export default function CatalogList() {
   }
 
   return (
-    <div className={css.catalog}>
-      <aside className={css.sidebar}>
-        <Filters
-          location={filters.location}
-          form={filters.form}
-          engine={filters.engine}
-          transmission={filters.transmission}
-          onLocationChange={value =>
-            setFilters(prev => ({
-              ...prev,
-              location: value,
-            }))
-          }
-          onFormChange={value =>
-            setFilters(prev => ({
-              ...prev,
-              form: value,
-            }))
-          }
-          onTransmissionChange={value =>
-            setFilters(prev => ({
-              ...prev,
-              transmission: value,
-            }))
-          }
-          onEngineChange={value =>
-            setFilters(prev => ({
-              ...prev,
-              engine: value,
-            }))
-          }
-          onSearch={() => setAppliedFilters(filters)}
-          onClearFilters={handleClearFilters}
-        />
-      </aside>
+    <div className={css.container}>
+      <div className={css.catalog}>
+        <aside className={css.sidebar}>
+          <Filters
+            location={filters.location}
+            form={filters.form}
+            engine={filters.engine}
+            transmission={filters.transmission}
+            onLocationChange={value =>
+              setFilters(prev => ({
+                ...prev,
+                location: value,
+              }))
+            }
+            onFormChange={value =>
+              setFilters(prev => ({
+                ...prev,
+                form: value,
+              }))
+            }
+            onTransmissionChange={value =>
+              setFilters(prev => ({
+                ...prev,
+                transmission: value,
+              }))
+            }
+            onEngineChange={value =>
+              setFilters(prev => ({
+                ...prev,
+                engine: value,
+              }))
+            }
+            onSearch={() => setAppliedFilters(filters)}
+            onClearFilters={handleClearFilters}
+          />
+        </aside>
 
-      <section className={css.content}>
-        {data?.pages.flatMap(page =>
-          page.campers.map(camper => (
-            <CamperCard key={camper.id} camper={camper} />
-          ))
-        )}
+        <section className={css.content}>
+          {data?.pages.flatMap(page =>
+            page.campers.map(camper => (
+              <CamperCard key={camper.id} camper={camper} />
+            ))
+          )}
 
-        {hasNextPage && (
-          <button
-            type="button"
-            onClick={() => fetchNextPage()}
-            disabled={isFetchingNextPage}
-          >
-            {isFetchingNextPage ? 'Loading...' : 'Load More'}
-          </button>
-        )}
-      </section>
+          {hasNextPage && (
+            <button
+              className={css.loadMoreButton}
+              type="button"
+              onClick={() => fetchNextPage()}
+              disabled={isFetchingNextPage}
+            >
+              {isFetchingNextPage ? 'Loading...' : 'Load more'}
+            </button>
+          )}
+        </section>
+      </div>
     </div>
   );
 }
