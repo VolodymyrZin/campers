@@ -32,31 +32,36 @@ export default function BookingForm({ camperId }: BookingFormProps) {
   return (
     <form className={css.form} onSubmit={handleSubmit}>
       <h1 className={css.formTitle}>Book your campervan now</h1>
+      <h3 className={css.formSubtitle}>
+        Stay connected! We are always ready to help you.
+      </h3>
+      <div className={css.inputWrapper}>
+        <div className={css.formGroup}>
+          <label htmlFor="name"></label>
 
-      <div className={css.formGroup}>
-        <label htmlFor="name">Name</label>
+          <input
+            id="name"
+            type="text"
+            name="name"
+            className={css.input}
+            required
+            placeholder="Name*"
+          />
+        </div>
 
-        <input
-          id="name"
-          type="text"
-          name="name"
-          className={css.input}
-          required
-        />
+        <div className={css.formGroup}>
+          <label htmlFor="email"></label>
+
+          <input
+            id="email"
+            type="email"
+            name="email"
+            className={css.input}
+            placeholder="Email*"
+            required
+          />
+        </div>
       </div>
-
-      <div className={css.formGroup}>
-        <label htmlFor="email">Email</label>
-
-        <input
-          id="email"
-          type="email"
-          name="email"
-          className={css.input}
-          required
-        />
-      </div>
-
       <div className={css.actions}>
         <button type="submit" className={css.submitButton}>
           Send

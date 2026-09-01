@@ -15,12 +15,16 @@
   display: grid;
   grid-template-columns: 1fr 1fr;
   gap: 24px;
+  margin-bottom: 88px;
 }
 
 .bottomSection {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 24px;
+  /* display: grid; */
+  /* grid-template-columns: 1fr 1fr; */
+  gap: 48px;
+  display: flex;
+
+  align-items: flex-start;
 }
 
 .locationLogoRating {
