@@ -21,12 +21,11 @@ export default function BookingForm({ camperId }: BookingFormProps) {
     };
 
     try {
-      const response = await createBooking(camperId, body);
-
-      console.log(response);
+      await createBooking(camperId, body);
       toast.success('Booking request sent successfully!');
-    } catch (error) {
-      console.error(error);
+      form.reset();
+    } catch {
+      toast.error('Something went wrong. Please try again.');
     }
   };
 

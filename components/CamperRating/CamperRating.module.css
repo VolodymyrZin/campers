@@ -1,0 +1,12 @@
+.star {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 4px;
+}
+.star svg {
+  width: 15px;
+  height: 14px;
+  fill: #dadde1;
+  stroke: none;
+}

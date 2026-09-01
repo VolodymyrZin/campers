@@ -1,0 +1,52 @@
+.avatar {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 60px;
+  width: 60px;
+  height: 60px;
+  background-color: #fff;
+  font-weight: 600;
+  font-size: 24px;
+  line-height: 1.33333;
+  color: #829b91;
+  font-family: 'Inter', sans-serif;
+}
+.review {
+  border-radius: 16px;
+  padding: 16px;
+  background-color: #f7f7f7;
+}
+.reviewer {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  margin-bottom: 16px;
+}
+.comment {
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 1.5;
+  color: #475467;
+  font-family: 'Inter', sans-serif;
+}
+.list {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+.title {
+  font-weight: 600;
+  font-size: 24px;
+  line-height: 1.33333;
+  color: #101828;
+  font-family: 'Inter', sans-serif;
+  margin-bottom: 24px;
+}
+.reviewer_name {
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 1.5;
+  color: #101828;
+  font-family: 'Inter', sans-serif;
+}

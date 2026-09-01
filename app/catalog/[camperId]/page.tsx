@@ -3,6 +3,7 @@ import CamperGallery from '@/components/CamperGallery/CamperGallery';
 import { getCamperById, getReviews } from '@/lib/api/campers';
 import css from './CamperPage.module.css';
 import VehicleDetails from '@/components/VehicleDetails/VehicleDetails';
+import Reviews from '@/components/Reviews/Reviews';
 
 interface CamperPageProps {
   params: Promise<{
@@ -26,12 +27,6 @@ export default async function CamperPage({ params }: CamperPageProps) {
         <div className={css.info}>
           <section className={css.summary}>
             <h1 className={css.camperName}>{camper.name}</h1>
-
-            {/* <div>
-              <p>Rating: {camper.rating}</p>
-              <p>Reviews: {camper.totalReviews}</p>
-              <p>Location: {camper.location}</p>
-            </div> */}
 
             <div className={css.ratingReviewsLocationWrapper}>
               <p className={css.locationLogoRating}>
@@ -59,17 +54,7 @@ export default async function CamperPage({ params }: CamperPageProps) {
       </section>
 
       <section className={css.bottomSection}>
-        <section className={css.reviews}>
-          <h2>Reviews</h2>
-
-          {reviews.map(review => (
-            <article key={review.id}>
-              <h3>{review.reviewer_name}</h3>
-              <p>Rating: {review.reviewer_rating}</p>
-              <p>{review.comment}</p>
-            </article>
-          ))}
-        </section>
+        <Reviews reviews={reviews} />
 
         <BookingForm camperId={camperId} />
       </section>
