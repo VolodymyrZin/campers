@@ -1,72 +1,114 @@
 'use client';
 
-import { createBooking } from '@/lib/api/bookings';
 import toast from 'react-hot-toast';
+import * as Yup from 'yup';
+import { Formik, Form, Field } from 'formik';
+import { createBooking } from '@/lib/api/bookings';
+import { BookingRequest } from '@/types/camper';
 import css from './BookingForm.module.css';
 
 interface BookingFormProps {
   camperId: string;
 }
 
+export const bookingSchema = Yup.object().shape({
+  name: Yup.string()
+    .trim()
+    .matches(/^[a-zA-Zа-яА-ЯіІїЇєЄґҐ\s]+$/, 'Please enter your name.')
+    .min(2, 'Please enter your name.')
+    .required('Please enter your name.'),
+  email: Yup.string()
+    .email('Please enter your email.')
+    .required('Please enter your email.'),
+});
+
 export default function BookingForm({ camperId }: BookingFormProps) {
-  const handleSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
-    event.preventDefault();
+  const initialValues: BookingRequest = {
+    name: '',
+    email: '',
+  };
 
-    const form = event.currentTarget;
-    const formData = new FormData(form);
-
-    const body = {
-      name: formData.get('name') as string,
-      email: formData.get('email') as string,
-    };
-
+  const handleSubmit = async (
+    values: BookingRequest,
+    { resetForm }: { resetForm: () => void }
+  ) => {
     try {
-      await createBooking(camperId, body);
+      await createBooking(camperId, values);
       toast.success('Booking request sent successfully!');
-      form.reset();
+      resetForm();
     } catch {
       toast.error('Something went wrong. Please try again.');
     }
   };
 
   return (
-    <form className={css.form} onSubmit={handleSubmit}>
-      <h1 className={css.formTitle}>Book your campervan now</h1>
-      <h3 className={css.formSubtitle}>
-        Stay connected! We are always ready to help you.
-      </h3>
-      <div className={css.inputWrapper}>
-        <div className={css.formGroup}>
-          <label htmlFor="name"></label>
+    <Formik
+      initialValues={initialValues}
+      validationSchema={bookingSchema}
+      onSubmit={handleSubmit}
+    >
+      {({ errors, touched }) => (
+        <Form className={css.form} noValidate>
+          <h2 className={css.formTitle}>Book your campervan now</h2>
+          <p className={css.formSubtitle}>
+            Stay connected! We are always ready to help you.
+          </p>
 
-          <input
-            id="name"
-            type="text"
-            name="name"
-            className={css.input}
-            required
-            placeholder="Name*"
-          />
-        </div>
+          <div className={css.inputWrapper}>
+            <div className={css.formGroup}>
+              {touched.name && errors.name && (
+                <label className={css.floatingLabel}>Name*</label>
+              )}
+              <div className={css.fieldInner}>
+                <Field
+                  id="name"
+                  type="text"
+                  name="name"
+                  placeholder="Name*"
+                  className={`${css.input} ${
+                    touched.name && errors.name ? css.inputError : ''
+                  }`}
+                />
+                {touched.name && errors.name && (
+                  <span className={css.errorIcon}>!</span>
+                )}
+              </div>
+              {touched.name && errors.name && (
+                <span className={css.errorMessage}>{errors.name}</span>
+              )}
+            </div>
 
-        <div className={css.formGroup}>
-          <label htmlFor="email"></label>
+            <div className={css.formGroup}>
+              {touched.email && errors.email && (
+                <label className={css.floatingLabel}>Email*</label>
+              )}
+              <div className={css.fieldInner}>
+                <Field
+                  id="email"
+                  type="email"
+                  name="email"
+                  placeholder="Email*"
+                  className={`${css.input} ${
+                    touched.email && errors.email ? css.inputError : ''
+                  }`}
+                />
+                {touched.email && errors.email && (
+                  <span className={css.errorIcon}>!</span>
+                )}
+              </div>
+              {touched.email && errors.email && (
+                <span className={css.errorMessage}>{errors.email}</span>
+              )}
+            </div>
+          </div>
 
-          <input
-            id="email"
-            type="email"
-            name="email"
-            className={css.input}
-            placeholder="Email*"
-            required
-          />
-        </div>
-      </div>
-      <div className={css.actions}>
-        <button type="submit" className={css.submitButton}>
-          Send
-        </button>
-      </div>
-    </form>
+          <div className={css.actions}>
+            <button type="submit" className={css.submitButton}>
+              Send
+            </button>
+          </div>
+        </Form>
+      )}
+    </Formik>
   );
 }

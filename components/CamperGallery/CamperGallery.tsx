@@ -1,39 +1,3 @@
-// import type { CamperDetails } from '@/types/camper';
-// import css from './CamperGallery.module.css';
-
-// interface CamperGalleryProps {
-//   gallery: CamperDetails['gallery'];
-//   camperName: string;
-// }
-
-// export default function CamperGallery({
-//   gallery,
-//   camperName,
-// }: CamperGalleryProps) {
-//   return (
-//     <div className={css.gallery}>
-//       <img
-//         className={css.mainImage}
-//         src={gallery[0].original}
-//         alt={camperName}
-//         width={638}
-//         height={505}
-//       />
-
-//       <div className={css.thumbnails}>
-//         {gallery.map(image => (
-//           <img
-//             key={image.id}
-//             className={css.thumbnail}
-//             src={image.original}
-//             alt={camperName}
-//           />
-//         ))}
-//       </div>
-//     </div>
-//   );
-// }
-
 'use client';
 
 import { useState } from 'react';
