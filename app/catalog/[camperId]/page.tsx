@@ -53,6 +53,7 @@ export default async function CamperPage({ params }: CamperPageProps) {
         </div>
       </section>
 
+      <h2 className={css.sectionTitle}>Reviews</h2>
       <section className={css.bottomSection}>
         <Reviews reviews={reviews} />
 
