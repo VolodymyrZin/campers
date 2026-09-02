@@ -19,11 +19,8 @@
 }
 
 .bottomSection {
-  /* display: grid; */
-  /* grid-template-columns: 1fr 1fr; */
-  gap: 48px;
   display: flex;
-
+  gap: 48px;
   align-items: flex-start;
 }
 

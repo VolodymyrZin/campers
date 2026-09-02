@@ -126,6 +126,7 @@
   font-family: 'Inter', sans-serif;
   margin-bottom: 16px;
   border: none;
+  cursor: pointer;
 }
 .clearFiltersButton {
   border: 1px solid #dadde1;
@@ -144,6 +145,7 @@
   align-items: center;
   justify-content: center;
   gap: 8px;
+  cursor: pointer;
 }
 .iconActive,
 .iconInactive {

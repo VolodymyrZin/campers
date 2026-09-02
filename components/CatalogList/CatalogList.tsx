@@ -7,6 +7,8 @@ import Filters from '../../components/Filters/Filters';
 import css from './CatalogList.module.css';
 import { useState } from 'react';
 import type { CamperForm, Transmission, Engine } from '@/types/camper';
+import NothingFound from '../NothingFound/NothingFound';
+import LoaderModal from '../LoaderModal/LoaderModal';
 
 interface FiltersState {
   location: string;
@@ -26,13 +28,19 @@ export default function CatalogList() {
 
   const [appliedFilters, setAppliedFilters] =
     useState<FiltersState>(initialFilters);
+
   const handleClearFilters = () => {
     setFilters(initialFilters);
+    setAppliedFilters(initialFilters);
+  };
+
+  const handleViewAll = () => {
     setAppliedFilters(initialFilters);
   };
   const {
     data,
     isLoading,
+    isFetching,
     isError,
     fetchNextPage,
     hasNextPage,
@@ -54,9 +62,9 @@ export default function CatalogList() {
       return undefined;
     },
   });
-
+  const campers = data?.pages.flatMap(page => page.campers) ?? [];
   if (isLoading) {
-    return <p>Loading...</p>;
+    return <LoaderModal isLoading />;
   }
 
   if (isError) {
@@ -65,6 +73,7 @@ export default function CatalogList() {
 
   return (
     <div className={css.container}>
+      <LoaderModal isLoading={isFetching && !isFetchingNextPage} />
       <div className={css.catalog}>
         <aside className={css.sidebar}>
           <Filters
@@ -100,23 +109,29 @@ export default function CatalogList() {
             onClearFilters={handleClearFilters}
           />
         </aside>
-
         <section className={css.content}>
-          {data?.pages.flatMap(page =>
-            page.campers.map(camper => (
-              <CamperCard key={camper.id} camper={camper} />
-            ))
-          )}
+          {campers.length === 0 ? (
+            <NothingFound
+              onViewAll={handleViewAll}
+              onClearFilters={handleClearFilters}
+            />
+          ) : (
+            <>
+              {campers.map(camper => (
+                <CamperCard key={camper.id} camper={camper} />
+              ))}
 
-          {hasNextPage && (
-            <button
-              className={css.loadMoreButton}
-              type="button"
-              onClick={() => fetchNextPage()}
-              disabled={isFetchingNextPage}
-            >
-              {isFetchingNextPage ? 'Loading...' : 'Load more'}
-            </button>
+              {hasNextPage && (
+                <button
+                  className={css.loadMoreButton}
+                  type="button"
+                  onClick={() => fetchNextPage()}
+                  disabled={isFetchingNextPage}
+                >
+                  {isFetchingNextPage ? 'Loading...' : 'Load more'}
+                </button>
+              )}
+            </>
           )}
         </section>
       </div>

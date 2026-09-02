@@ -1,0 +1,67 @@
+.wrapper {
+  padding: 24px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background-color: #f7f7f7;
+  border-radius: 16px;
+}
+.title {
+  font-weight: 600;
+  font-size: 24px;
+  line-height: 1.33333;
+  text-align: center;
+  color: #101828;
+  font-family: 'Inter', sans-serif;
+  margin-bottom: 16px;
+}
+.text {
+  margin-bottom: 43px;
+}
+.textUp,
+.textDown {
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 1.5;
+  text-align: center;
+  color: #101828;
+  font-family: 'Inter', sans-serif;
+}
+.actions {
+  display: flex;
+  gap: 16px;
+  margin-bottom: 135px;
+}
+.clearFiltersBtn {
+  border: 1px solid #dadde1;
+  border-radius: 200px;
+  width: 192px;
+  height: 56px;
+  background-color: #fff;
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 1.5;
+  letter-spacing: -0.01em;
+  color: #101828;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+}
+.clearFiltersBtn svg {
+  margin-right: 4px;
+}
+.viewAllCampersBtn {
+  border-radius: 200px;
+  width: 192px;
+  height: 56px;
+  background-color: #829b91;
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 1.5;
+  letter-spacing: -0.01em;
+  color: #fff;
+  border: none;
+  cursor: pointer;
+}

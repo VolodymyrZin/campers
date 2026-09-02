@@ -1,36 +1,139 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# TravelTrucks
+
+TravelTrucks — вебзастосунок для пошуку та бронювання кемперів. Користувачі
+можуть переглядати каталог кемперів, фільтрувати їх за параметрами, переглядати
+детальну інформацію, відгуки та бронювати обраний кемпер.
+
+## Features
+
+- Перегляд головної сторінки з банером та переходом до каталогу.
+- Перегляд каталогу кемперів.
+- Фільтрація кемперів за:
+  - локацією;
+  - типом кузова;
+  - типом двигуна;
+  - типом трансмісії.
+
+- Серверна фільтрація через query-параметри.
+- Пагінація каталогу за допомогою кнопки **Load More**.
+- Завантаження по 4 кемпери за один запит.
+- Перегляд детальної інформації про кемпер.
+- Галерея зображень кемпера.
+- Перегляд відгуків та рейтингу у вигляді п'ятизіркової шкали.
+- Форма бронювання кемпера.
+- Відправлення даних бронювання на backend API.
+- Повідомлення про успішне бронювання.
+- Loader під час асинхронних запитів.
+- Відкриття сторінки деталей кемпера у новій вкладці.
+
+## Technologies
+
+- Next.js
+- React
+- TypeScript
+- TanStack Query
+- Axios
+- Formik
+- Yup
+- CSS Modules
+- Swiper
+- React Hot Toast
+- Ratti
+
+## Backend API
+
+Для отримання даних про кемпери та роботи з бронюваннями використовується
+TravelTrucks API:
+
+`https://campers-api.goit.study`
 
 ## Getting Started
 
-First, run the development server:
+### 1. Clone the repository
+
+```bash
+git clone git@github.com:VolodymyrZin/campers.git
+```
+
+### 2. Navigate to the project directory
+
+```bash
+cd campers
+```
+
+### 3. Install dependencies
+
+```bash
+npm install
+```
+
+### 4. Run the development server
 
 ```bash
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Відкрийте http://localhost:3000 у браузері.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## Available Scripts
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+### Development
 
-## Learn More
+```bash
+npm run dev
+```
 
-To learn more about Next.js, take a look at the following resources:
+Запускає застосунок у режимі розробки.
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+### Production build
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+```bash
+npm run build
+```
 
-## Deploy on Vercel
+Створює production build застосунку.
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+### Production start
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+```bash
+npm start
+```
+
+Запускає production-версію застосунку.
+
+## Project Structure
+
+```text
+app/
+├── page.tsx
+└── catalog/
+    ├── page.tsx
+    ├── loading.tsx
+    └── [camperId]/
+        ├── page.tsx
+        └── loading.tsx
+
+components/
+├── Hero/
+├── CatalogList/
+├── CamperCard/
+├── Filters/
+├── NothingFound/
+├── CamperGallery/
+├── Reviews/
+├── CamperRating/
+├── BookingForm/
+└── LoaderModal/
+
+lib/
+└── api/
+
+types/
+└── camper.ts
+```
+
+## Author
+
+**VolodymyrZin**
+
+GitHub: https://github.com/VolodymyrZin/campers

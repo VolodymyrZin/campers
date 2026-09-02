@@ -1,6 +1,5 @@
 'use client';
 
-import { useState } from 'react';
 
 import type { CamperForm, Engine, Transmission } from '@/types/camper';
 import css from './Filters.module.css';

@@ -9,7 +9,6 @@ interface ReviewsProps {
 export default function Reviews({ reviews }: ReviewsProps) {
   return (
     <section className={css.reviews}>
-      {/* <h2 className={css.title}>Reviews</h2> */}
       <div className={css.list}>
         {reviews.map(review => (
           <article className={css.review} key={review.id}>

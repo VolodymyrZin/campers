@@ -1,5 +1,6 @@
 import type { Camper } from '@/types/camper';
 import css from './CamperCard.module.css';
+import Image from 'next/image';
 import Link from 'next/link';
 
 interface CamperCardProps {
@@ -9,7 +10,7 @@ interface CamperCardProps {
 export default function CamperCard({ camper }: CamperCardProps) {
   return (
     <article className={css.camperCard}>
-      <img
+      <Image
         className={css.image}
         src={camper.coverImage}
         alt={camper.name}

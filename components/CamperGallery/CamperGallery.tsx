@@ -4,6 +4,7 @@ import { useState } from 'react';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { FreeMode, Navigation, Thumbs } from 'swiper/modules';
 import type { Swiper as SwiperType } from 'swiper';
+import Image from 'next/image';
 
 import type { CamperDetails } from '@/types/camper';
 import css from './CamperGallery.module.css';
@@ -29,13 +30,12 @@ export default function CamperGallery({
       <Swiper
         className={css.mainSwiper}
         spaceBetween={10}
-        navigation
         thumbs={{ swiper: thumbsSwiper }}
         modules={[FreeMode, Navigation, Thumbs]}
       >
         {gallery.map(image => (
           <SwiperSlide key={image.id}>
-            <img
+            <Image
               className={css.mainImage}
               src={image.original}
               alt={camperName}
@@ -58,7 +58,13 @@ export default function CamperGallery({
       >
         {gallery.map(image => (
           <SwiperSlide key={image.id}>
-            <img className={css.thumbnail} src={image.thumb} alt={camperName} />
+            <Image
+              className={css.thumbnail}
+              src={image.thumb}
+              alt={camperName}
+              width={136}
+              height={144}
+            />
           </SwiperSlide>
         ))}
       </Swiper>
