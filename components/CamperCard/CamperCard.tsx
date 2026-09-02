@@ -37,7 +37,7 @@ export default function CamperCard({ camper }: CamperCardProps) {
               <use href="/sprite.svg#icon-location-active" />
             </svg>
 
-            <p>{camper.location}</p>
+            <p>{camper.location.split(', ').reverse().join(', ')}</p>
           </div>
         </div>
         <p className={css.description}>{camper.description}</p>
