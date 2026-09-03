@@ -59,14 +59,11 @@
   font-weight: 400;
   font-size: 16px;
   line-height: 1.5;
-  display: -webkit-box;
-  -webkit-line-clamp: 1;
-  -webkit-box-orient: vertical;
-  overflow: hidden;
+  font-family: 'Inter', sans-serif;
+
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
-  font-family: 'Inter', sans-serif;
 }
 
 .features {
