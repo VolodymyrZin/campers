@@ -8,8 +8,8 @@ export default function Hero() {
         <Image
           src="/images/hero.webp"
           alt="Hero banner"
-          width={1200}
-          height={600}
+          width={1440}
+          height={761}
           priority
           loading="eager"
           className={css.heroImage}
