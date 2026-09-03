@@ -26,7 +26,7 @@ export default function LoaderModal({ isLoading }: LoaderModalProps) {
     <div className={css.overlay}>
       <div className={css.modal}>
         <div className={css.spinner}></div>
-        <h3 className={css.title}>Loading tracks...</h3>
+        <p className={css.title}>Loading tracks...</p>
         <p className={css.subtitle}>
           Please wait while we fetch the best travel trucks for you
         </p>

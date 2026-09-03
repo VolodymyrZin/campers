@@ -11,7 +11,6 @@
   margin: 0 auto;
   padding-left: 63px;
   padding-right: 64px;
-  /* outline: 1px solid red; */
 
   display: flex;
   align-items: center;
@@ -29,7 +28,7 @@
   gap: 32px;
 }
 
-.homePage {
+.navLink {
   font-family: 'Inter', sans-serif;
   font-weight: 500;
   font-size: 16px;
@@ -38,11 +37,6 @@
   cursor: pointer;
 }
 
-.catalogPage {
-  font-family: 'Inter', sans-serif;
-  font-weight: 500;
-  font-size: 16px;
-  line-height: 1.5;
+.active {
   color: #829b91;
-  cursor: pointer;
 }
