@@ -41,6 +41,7 @@ export default function CamperGallery({
               alt={camperName}
               width={638}
               height={505}
+              loading="eager"
             />
           </SwiperSlide>
         ))}
