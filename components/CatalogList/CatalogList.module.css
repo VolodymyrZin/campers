@@ -36,4 +36,9 @@
   letter-spacing: -0.01em;
   color: #101828;
   background-color: #fff;
+  transition: border 0.2s ease;
+}
+.loadMoreButton:hover,
+.loadMoreButton:focus {
+  border: 1px solid #6d7b75;
 }

@@ -151,6 +151,11 @@
   justify-content: center;
   gap: 8px;
   cursor: pointer;
+  transition: border 0.2s ease;
+}
+.clearFiltersButton:hover,
+.clearFiltersButton:focus {
+  border: 1px solid #6d7b75;
 }
 .iconActive,
 .iconInactive {

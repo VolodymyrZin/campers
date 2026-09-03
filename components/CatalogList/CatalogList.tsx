@@ -62,10 +62,29 @@ export default function CatalogList() {
       return undefined;
     },
   });
+  const handlers = {
+    location: (value: string) =>
+      setFilters(prev => ({
+        ...prev,
+        location: value,
+      })),
+    form: (value: CamperForm | undefined) =>
+      setFilters(prev => ({
+        ...prev,
+        form: value,
+      })),
+    transmission: (value: Transmission | undefined) =>
+      setFilters(prev => ({
+        ...prev,
+        transmission: value,
+      })),
+    engine: (value: Engine | undefined) =>
+      setFilters(prev => ({
+        ...prev,
+        engine: value,
+      })),
+  };
   const campers = data?.pages.flatMap(page => page.campers) ?? [];
-  if (isLoading) {
-    return <LoaderModal isLoading />;
-  }
 
   if (isError) {
     return <p>Something went wrong</p>;
@@ -73,7 +92,9 @@ export default function CatalogList() {
 
   return (
     <div className={css.container}>
-      <LoaderModal isLoading={isFetching && !isFetchingNextPage} />
+      <LoaderModal
+        isLoading={isLoading || (isFetching && !isFetchingNextPage)}
+      />
       <div className={css.catalog}>
         <aside className={css.sidebar}>
           <Filters
@@ -81,30 +102,10 @@ export default function CatalogList() {
             form={filters.form}
             engine={filters.engine}
             transmission={filters.transmission}
-            onLocationChange={value =>
-              setFilters(prev => ({
-                ...prev,
-                location: value,
-              }))
-            }
-            onFormChange={value =>
-              setFilters(prev => ({
-                ...prev,
-                form: value,
-              }))
-            }
-            onTransmissionChange={value =>
-              setFilters(prev => ({
-                ...prev,
-                transmission: value,
-              }))
-            }
-            onEngineChange={value =>
-              setFilters(prev => ({
-                ...prev,
-                engine: value,
-              }))
-            }
+            onLocationChange={handlers.location}
+            onFormChange={handlers.form}
+            onTransmissionChange={handlers.transmission}
+            onEngineChange={handlers.engine}
             onSearch={() => setAppliedFilters(filters)}
             onClearFilters={handleClearFilters}
           />

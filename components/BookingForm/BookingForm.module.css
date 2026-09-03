@@ -38,6 +38,15 @@
   color: #101828;
   font-family: 'Inter', sans-serif;
 }
+.input:focus {
+  outline: none;
+}
+.input:-webkit-autofill,
+.input:-webkit-autofill:focus {
+  background-color: #f7f7f7 !important;
+  -webkit-box-shadow: 0 0 0px 1000px #f7f7f7 inset;
+  -webkit-text-fill-color: #101828;
+}
 
 .submitButton {
   margin-top: 24px;

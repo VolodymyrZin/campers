@@ -48,7 +48,13 @@
   justify-content: center;
   align-items: center;
   cursor: pointer;
+  transition: border 0.2s ease;
 }
+.clearFiltersBtn:hover,
+.clearFiltersBtn:focus {
+  border: 1px solid #6d7b75;
+}
+
 .clearFiltersBtn svg {
   margin-right: 4px;
 }
