@@ -127,6 +127,11 @@
   margin-bottom: 16px;
   border: none;
   cursor: pointer;
+  transition: background-color 0.2s ease;
+}
+.searchButton:hover,
+.searchButton:focus {
+  background-color: #6d7b75;
 }
 .clearFiltersButton {
   border: 1px solid #dadde1;

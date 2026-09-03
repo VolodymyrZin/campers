@@ -4,7 +4,7 @@ import css from './Hero.module.css';
 export default function Hero() {
   return (
     <div className={css.container}>
-      <section className={css.wrapper}>
+      <section className={css.hero}>
         <div className={css.heroText}>
           <h1 className={css.title}>Campers of your dreams</h1>
 

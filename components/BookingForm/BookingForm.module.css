@@ -50,8 +50,12 @@
   color: #fff;
   background-color: #829b91;
   border: none;
+  transition: background-color 0.2s ease;
 }
-
+.submitButton:hover,
+.submitButton:focus {
+  background-color: #6d7b75;
+}
 .inputWrapper {
   display: flex;
   flex-direction: column;

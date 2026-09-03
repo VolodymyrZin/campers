@@ -22,7 +22,7 @@ export default function NothingFound({
         <div className={css.text}>
           <h1 className={css.title}>No campers found</h1>
           <p className={css.textUp}>
-            We couldn`t find any campers that match your filters.
+            We couldn&#39;t find any campers that match your filters.
           </p>
           <p className={css.textDown}>
             Try adjusting your search or clearing some filters.
@@ -42,7 +42,10 @@ export default function NothingFound({
           <button
             className={css.viewAllCampersBtn}
             type="button"
-            onClick={onViewAll}
+            onClick={() => {
+              onViewAll();
+              onClearFilters();
+            }}
           >
             View all campers
           </button>

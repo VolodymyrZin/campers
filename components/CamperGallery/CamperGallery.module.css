@@ -24,6 +24,13 @@
   width: 136px;
   height: 144px;
   object-fit: cover;
-  border: 3px solid #829b91;
+  border: 3px solid transparent;
   border-radius: 16px;
+  box-sizing: border-border;
+  cursor: pointer;
+  transition: border-color 0.2s ease;
+}
+
+:global(.swiper-slide-thumb-active) .thumbnail {
+  border-color: #829b91;
 }
