@@ -35,12 +35,12 @@ export default async function CamperPage({ params }: CamperPageProps) {
                 </svg>
                 {camper.rating}
               </p>
-              <p>
+              <p className={css.location}>
                 ({camper.totalReviews} Reviews)
                 <svg width="15" height="14">
                   <use href="/sprite.svg#icon-location-active" />
                 </svg>
-                {camper.location}
+                {camper.location.split(', ').reverse().join(', ')}
               </p>
             </div>
 

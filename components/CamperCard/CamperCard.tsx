@@ -32,12 +32,14 @@ export default function CamperCard({ camper }: CamperCardProps) {
               </svg>
               {camper.rating}
             </p>
-            <p>({camper.totalReviews} Reviews)</p>
-            <svg width="15" height="14">
+            <p className={css.location}>({camper.totalReviews} Reviews)</p>
+            <svg width="15" height="14" className={css.locationSvg}>
               <use href="/sprite.svg#icon-location-active" />
             </svg>
 
-            <p>{camper.location.split(', ').reverse().join(', ')}</p>
+            <p className={css.city}>
+              {camper.location.split(', ').reverse().join(', ')}
+            </p>
           </div>
         </div>
         <p className={css.description}>{camper.description}</p>

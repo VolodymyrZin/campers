@@ -44,9 +44,18 @@
 .ratingReviewsLocationWrapper {
   display: flex;
   align-items: center;
-  gap: 8px;
+  /* gap: 8px; */
   color: #101828;
   font-size: 16px;
+}
+.location {
+  margin-right: 16px;
+}
+.location svg {
+  margin-right: 4px;
+}
+.locationSvg {
+  margin-right: 4px;
 }
 .ratingReviewsLocationWrapper p {
   display: flex;
