@@ -83,18 +83,16 @@
 .features span {
   display: flex;
   align-items: center;
+  justify-content: center;
   padding: 12px 18px;
   border-radius: 100px;
   background-color: #f2f4f7;
   font-size: 16px;
   font-weight: 500;
+  line-height: 1.5;
   color: #101828;
   text-transform: capitalize;
-  font-weight: 500;
-  font-size: 16px;
-  line-height: 1.5;
-  text-align: center;
-  color: #101828;
+  /* text-align: center; */
   mix-blend-mode: multiply;
   gap: 8px;
 }
