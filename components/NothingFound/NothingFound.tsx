@@ -18,6 +18,7 @@ export default function NothingFound({
           alt="No campers found"
           width={488}
           height={463}
+          loading="eager"
         />
         <div className={css.text}>
           <h1 className={css.title}>No campers found</h1>
